@@ -20,9 +20,9 @@ public class Account {
     @Column(name = "account_id", nullable = false, columnDefinition = "BIGINT", unique = true)
     private long accountId;
 
-    @ManyToOne
     @JoinColumn(name = "client_id")
-    private User clientId;
+    @JsonProperty("client_id")
+    private Long clientId;
 
     @Column(name = "account_num", nullable = false, columnDefinition = "BIGINT")
     private long accountNum;
@@ -33,7 +33,8 @@ public class Account {
     @Column(name = "balance", nullable = false, columnDefinition = "DECIMAL")
     private BigDecimal balance;
 
-    public Account(long accountNum, String accountType, BigDecimal balance) {
+    public Account(Long clientId,long accountNum, String accountType, BigDecimal balance) {
+        this.clientId = clientId;
         this.accountNum = accountNum;
         this.accountType = accountType;
         this.balance = balance;
