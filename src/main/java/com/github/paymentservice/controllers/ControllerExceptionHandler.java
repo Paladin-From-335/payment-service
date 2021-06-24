@@ -15,7 +15,7 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {BadRequest.class})
     public ResponseEntity<Object> handleLogicException(BadRequest e) {
-        return ErrorResponse.errorResponse("400", e.getMessage(), HttpStatus.BAD_GATEWAY);
+        return ErrorResponse.errorResponse(String.valueOf(HttpStatus.BAD_REQUEST.value()), e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
 }

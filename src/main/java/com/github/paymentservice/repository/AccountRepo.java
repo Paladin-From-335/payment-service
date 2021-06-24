@@ -14,3 +14,4 @@ public interface AccountRepo extends JpaRepository<Account, Long> {
     @Query(value = "SELECT * FROM account_table WHERE account_table.client_id = :clientId", nativeQuery = true)
     List<Account> findAllByClientId(long clientId);
 }
+

@@ -1,6 +1,8 @@
 package com.github.paymentservice.utils;
 
+import com.github.paymentservice.dto.PaymentDto;
 import com.github.paymentservice.dto.UserRegDto;
+import com.github.paymentservice.entity.Payment;
 import com.github.paymentservice.entity.User;
 
 public class TransferObj {
@@ -12,11 +14,13 @@ public class TransferObj {
         );
     }
 
-//    public static Account toAccount(AccountRegDto data) {
-//        return new Account(
-//                data.getAccountNum(),
-//                data.getAccountType(),
-//                data.getBalance()
-//        );
-//    }
+    public static Payment toPayment(PaymentDto data) {
+        return new Payment(
+                data.getAmount(),
+                data.getReason(),
+                data.getTimestamp(),
+                data.getSourceAccId(),
+                data.getDestAccId()
+        );
+    }
 }
