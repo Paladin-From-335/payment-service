@@ -92,7 +92,7 @@ public class PaymentService {
         List<Long> ids = new ArrayList();
         ids.add(payload.getSourceAccId());
         ids.add(payload.getDestAccId());
-        return paymentRepo.getAccListById(ids);
+        return accountRepo.getAccListById(ids);
     }
 
     public void insertClientAccounts(List<Payment> paymentList) {
@@ -107,7 +107,7 @@ public class PaymentService {
     }
 
 
-//    public List<Account> findAccountsById(List<Long> accountId) {
-//      return paymentRepo.getAccListById(accountId);
-//    }
+    public List<Payment> getPaymentJournal(PaymentDto payload) {
+        return paymentRepo.getPaymentJournal(payload.getSourceAccId());
+    }
 }

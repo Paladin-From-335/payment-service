@@ -6,7 +6,7 @@ spring:
       ddl-auto: update
     generate-ddl: false
   datasource:
-    url: jdbc:postgresql://ec2-108-128-104-50.eu-west-1.compute.amazonaws.com:5432/d85od04sp8r4lm
-    username: imyfeanjvikrye
-    password: c1a14c51677d98e2be61336acb887b3628512b46e96e6b955bbe6b196573cf00
+    url: jdbc:postgresql://ec2-54-74-95-84.eu-west-1.compute.amazonaws.com:5432/d6rs6i0v6sagig
+    username: tfpxkvffnwfdmw
+    password: 12a3639bfbbaea5a7e7bc0f4bbe474e00d155698ec1c22031f6953f1b7ae0601
     driver-class-name: org.postgresql.Driver

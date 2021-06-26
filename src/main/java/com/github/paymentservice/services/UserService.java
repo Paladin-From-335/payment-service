@@ -27,13 +27,13 @@ public class UserService {
     }
 
     @Transactional
-    public Long clientId(UserRegDto payload) {
+    public Long createUser(UserRegDto payload) {
         User user = TransferObj.toUser(payload);
         insert(user);
         accountService.insertClientAccounts(converter.convertDtoToEntity(payload.getAccounts(), user.getClientId()));
         return user.getClientId();
     }
-    public List<Account> accounts(Long clientId) {
+    public List<Account> getAccounts(Long clientId) {
         return accountService.findAllAccountsByClientId(clientId);
     }
 }

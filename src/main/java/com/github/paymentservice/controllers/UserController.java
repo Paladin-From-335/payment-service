@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
+
 
 @Slf4j
 @RestController
@@ -20,11 +22,17 @@ public class UserController {
 
     @PostMapping("/registration")
     public ResponseEntity<Object> registration(@RequestBody UserRegDto payload) {
-        return ResponseEntity.ok(userService.clientId(payload));
+        if (payload.getFirstname() == null || payload.getLastname() == null || payload.getAccounts() == null) {
+            return ResponseEntity.badRequest().body("Not enough user data");
+        }
+        if(payload.getAccounts().isEmpty()) {
+            return ResponseEntity.badRequest().body("Not enough account data");
+        }
+        return ResponseEntity.ok(userService.createUser(payload));
     }
     @PostMapping("/accounts")
     public ResponseEntity<Object> getAccounts(@RequestBody User user) {
-        return ResponseEntity.ok(userService.accounts(user.getClientId()));
+        return ResponseEntity.ok(userService.getAccounts(user.getClientId()));
 
     }
 }
