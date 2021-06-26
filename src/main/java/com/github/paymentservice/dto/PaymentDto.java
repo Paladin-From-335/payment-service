@@ -29,12 +29,10 @@ public class PaymentDto {
 
     @NotNull
     @NotEmpty
-    @JsonProperty("source_acc_id")
     private Long sourceAccId;
 
     @NotNull
     @NotEmpty
-    @JsonProperty("dest_acc_id")
     private Long destAccId;
 
     public PaymentDto(BigDecimal amount, String reason, Long sourceAccId, Long destAccId) {

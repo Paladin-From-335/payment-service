@@ -1,6 +1,7 @@
 package com.github.paymentservice.services;
 
 import com.github.paymentservice.dto.PaymentDto;
+import com.github.paymentservice.dto.PaymentJournalDto;
 import com.github.paymentservice.dto.PaymentResult;
 import com.github.paymentservice.entity.Account;
 import com.github.paymentservice.entity.Payment;
@@ -107,7 +108,7 @@ public class PaymentService {
     }
 
 
-    public List<Payment> getPaymentJournal(PaymentDto payload) {
+    public List<Payment> getPaymentJournal(PaymentJournalDto payload) {
         return paymentRepo.getPaymentJournal(payload.getSourceAccId());
     }
 }

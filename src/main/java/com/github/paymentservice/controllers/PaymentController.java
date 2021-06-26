@@ -1,7 +1,7 @@
 package com.github.paymentservice.controllers;
 
 import com.github.paymentservice.dto.PaymentDto;
-import com.github.paymentservice.entity.Payment;
+import com.github.paymentservice.dto.PaymentJournalDto;
 import com.github.paymentservice.services.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class PaymentController {
     }
 
     @PostMapping("/journal")
-    public ResponseEntity<Object> getJournal(@RequestBody PaymentDto payload) {
+    public ResponseEntity<Object> getJournal(@RequestBody PaymentJournalDto payload) {
         return ResponseEntity.ok(paymentService.getPaymentJournal(payload));
     }
 }
