@@ -11,9 +11,11 @@ import lombok.NoArgsConstructor;
 public class PaymentJournalDto {
 
 
+    @JsonProperty("payer_id")
     private long payerId;
 
-    private long recipientId;
+    @JsonProperty("receiver_id")
+    private long receiverId;
 
     @JsonProperty("source_acc_id")
     private long sourceAccId;

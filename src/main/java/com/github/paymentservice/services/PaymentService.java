@@ -62,14 +62,9 @@ public class PaymentService {
     public Long processingPayment(PaymentDto payload) {
         Payment payment = TransferObj.toPayment(payload);
         insert(payment);
-        if (paymentRepo.findAccountById(payload.getSourceAccId()) == null || paymentRepo.findAccountById(payload.getDestAccId()) == null) {
-            throw new PaymentException("Wrong sender or receiver", payment.getPaymentId());
-        }
         List<Account> accounts = getAccounts(payload);
-        if (accounts.size() != 2) {
-            throw new PaymentException("Not found account", payment.getPaymentId());
-        }
         Map<Long, Account> map = convertAccountId(accounts);
+        validateFoundAccounts(payment, map);
         checkPayerBalance(map, payload.getAmount(), payload.getSourceAccId());
         updateBalance(map, payload);
         accountRepo.saveAll(accounts);
@@ -80,6 +75,12 @@ public class PaymentService {
 
     public Map<Long, Account> convertAccountId(List<Account> accounts) {
         return accounts.stream().collect(Collectors.toMap(Account::getAccountId, Function.identity()));
+    }
+
+    public void validateFoundAccounts(Payment payment, Map<Long, Account> accounts){
+        if (accounts.size() != 2) {
+            throw new PaymentException("Not found account", payment.getPaymentId());
+        }
     }
 
     public void checkPayerBalance(Map<Long, Account> accounts, BigDecimal sum, Long payerId) {
@@ -104,11 +105,16 @@ public class PaymentService {
         Account payer = account.get(payload.getSourceAccId());
         Account dest = account.get(payload.getDestAccId());
         payer.setBalance(payer.getBalance().subtract(payload.getAmount()));
-        dest.setBalance(payer.getBalance().add(payload.getAmount()));
+        dest.setBalance(dest.getBalance().add(payload.getAmount()));
     }
 
 
-    public List<Payment> getPaymentJournal(PaymentJournalDto payload) {
-        return paymentRepo.getPaymentJournal(payload.getSourceAccId());
+    public List<Payment> getPaymentJournalBySrc(PaymentJournalDto payload) {
+        return paymentRepo.getPaymentJournal(payload.getSourceAccId(), payload.getDestAccId(), payload.getPayerId(), payload.getReceiverId());
     }
+
+//    public List<Payment> getPaymentJournal(PaymentJournalDto payload) {
+//        return paymentRepo.getPaymentJournal(payload.getSourceAccId());
+//    }
+
 }
