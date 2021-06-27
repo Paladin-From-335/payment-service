@@ -10,3 +10,6 @@ spring:
     username: tfpxkvffnwfdmw
     password: 12a3639bfbbaea5a7e7bc0f4bbe474e00d155698ec1c22031f6953f1b7ae0601
     driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
