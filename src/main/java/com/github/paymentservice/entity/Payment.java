@@ -30,7 +30,8 @@ public class Payment {
     @Column(name = "timestamp", nullable = false, columnDefinition = "TIMESTAMP")
     private Date timestamp;
 
-
+    //В итоге здесь лучше хранить объект, но я начал с АЙДИ и не стал переделывать, дабы не терять время
+    //В будущем, наверное, лучше хранить объект сущности вместо АЙДИ
     @Column(name = "source_acc_id", nullable = false, columnDefinition = "BIGINT")
     private Long sourceAccId;
 
