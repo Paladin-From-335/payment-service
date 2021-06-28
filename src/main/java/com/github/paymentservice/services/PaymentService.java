@@ -109,7 +109,7 @@ public class PaymentService {
     }
 
 
-    public List<Payment> getPaymentJournalBySrc(PaymentJournalDto payload) {
+    public List<Payment> getPaymentJournal(PaymentJournalDto payload) {
         return paymentRepo.getPaymentJournal(payload.getSourceAccId(), payload.getDestAccId(), payload.getPayerId(), payload.getReceiverId());
     }
 

@@ -1,4 +1,4 @@
-package com.github.paymentservice.services;
+package com.github.paymentservice;
 
 import com.github.paymentservice.dto.PaymentDto;
 import com.github.paymentservice.entity.Account;
@@ -6,9 +6,7 @@ import com.github.paymentservice.entity.Payment;
 import com.github.paymentservice.exceptions.BadRequest;
 import com.github.paymentservice.exceptions.PaymentException;
 import com.github.paymentservice.repository.AccountRepo;
-import com.github.paymentservice.repository.PaymentRepo;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import com.github.paymentservice.services.PaymentService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,7 +19,6 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;

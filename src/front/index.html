@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<main>
+    <section>
+        <h1>Create user</h1>
+        <form method="post">
+            <input type="text" placeholder="firstname">
+            <input type="text" placeholder="lastname">
+            <div class="account_data">
+                <input type="text" class="account" placeholder="account num">
+                <input type="text" class="account" placeholder="card/simple">
+                <input type="text" class="account" placeholder="balance">
+            </div>
+            <button type="button" id="create">Create</button>
+        </form>
+        <div id="acc_resp"></div>
+    </section>
+    <section>
+        <h1>Create payment</h1>
+        <form method="post">
+            <input type="text" class="payment_data" placeholder="account sender id">
+            <input type="text" class="payment_data" placeholder="account receiver id">
+            <input type="text" class="payment_data" placeholder="amount">
+            <input type="text" class="payment_data" placeholder="reason">
+            <button type="button" id="pay">Pay</button>
+        </form>
+        <div id="payment_resp"></div>
+    </section>
+    <section>
+        <h1>Get payment journal</h1>
+        <form method="post">
+            <input type="text" class="get_journal" placeholder="payer id">
+            <input type="text" class="get_journal" placeholder="receiver id">
+            <input type="text" class="get_journal" placeholder="account sender">
+            <input type="text" class="get_journal" placeholder="account receiver">
+            <button id="get_jour_btn" type="button">Get journal</button>
+        </form>
+        <div class="journal_resp"></div>
+    </section>
+</main>
+</body>
+</html>

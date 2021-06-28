@@ -32,6 +32,6 @@ public class PaymentController {
 
     @PostMapping("/journal")
     public ResponseEntity<Object> getJournal(@RequestBody PaymentJournalDto payload) {
-            return ResponseEntity.ok(paymentService.getPaymentJournalBySrc(payload));
+            return ResponseEntity.ok(paymentService.getPaymentJournal(payload));
     }
 }

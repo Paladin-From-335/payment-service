@@ -1,0 +1,13 @@
+body{
+    background: linear-gradient(90deg, lightskyblue, lightcyan);
+}
+
+main{
+    display: grid;
+    grid-template-rows: 600px 600px 600px;
+}
+section{
+    width: 80%;
+    margin: 0 10% 0 10%;
+    border: 3px solid lightgreen;
+}

@@ -23,5 +23,4 @@ public class PaymentJournalDto {
     @JsonProperty("dest_acc_id")
     private long destAccId;
 
-
 }

@@ -1,7 +1,7 @@
-create table account_table
+create table account_table_migrate
 (
     account_id   bigserial not null
-        constraint account_table_pk
+        constraint account_table_pk_migrate
             primary key,
     client_id    bigint    not null
         constraint fkb453v9qc79nsmniqggyvwrj5i
@@ -11,19 +11,19 @@ create table account_table
     balance      numeric   not null
 );
 
-alter table account_table
+alter table account_table_migrate
     owner to tfpxkvffnwfdmw;
 
-create unique index account_table_account_id_uindex
-    on account_table (account_id);
+create unique index account_table_account_id_uindex_migrate
+    on account_table_migrate (account_id);
 
-create unique index account_table_account_num_uindex
-    on account_table (account_num);
+create unique index account_table_account_num_uindex_migrate
+    on account_table_migrate (account_num);
 
-create table payment_table
+create table payment_table_migrate
 (
     payment_id    bigserial not null
-        constraint payment_table_pk
+        constraint payment_table_pk_migrate
             primary key,
     amount        numeric   not null,
     reason        text,
@@ -33,24 +33,24 @@ create table payment_table
     status        varchar(20) default 'NEW'::character varying
 );
 
-alter table payment_table
+alter table payment_table_migrate
     owner to tfpxkvffnwfdmw;
 
-create unique index payment_table_payment_id_uindex
-    on payment_table (payment_id);
+create unique index payment_table_payment_id_uindex_migrate
+    on payment_table_migrate (payment_id);
 
-create table user_table
+create table user_table_migrate
 (
     client_id bigserial not null
-        constraint user_table_pk
+        constraint user_table_pk_migrate
             primary key,
     firstname text      not null,
     lastname  text      not null
 );
 
-alter table user_table
+alter table user_table_migrate
     owner to tfpxkvffnwfdmw;
 
-create unique index user_table_client_id_uindex
-    on user_table (client_id);
+create unique index user_table_client_id_uindex_migrate
+    on user_table_migrate (client_id);
 
