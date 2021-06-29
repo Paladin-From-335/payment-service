@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @Slf4j
 @RestController
 public class UserController {
@@ -22,13 +23,18 @@ public class UserController {
         if (payload.getFirstname() == null || payload.getLastname() == null || payload.getAccounts() == null) {
             return ResponseEntity.badRequest().body("Not enough user data");
         }
-        if(payload.getAccounts().isEmpty()) {
+        if (payload.getAccounts().isEmpty()) {
             return ResponseEntity.badRequest().body("Not enough account data");
         }
+
         return ResponseEntity.ok(userService.createUser(payload));
     }
+
     @PostMapping("/accounts")
     public ResponseEntity<Object> getAccounts(@RequestBody User user) {
+        if (user.getClientId() <= 0) {
+            return ResponseEntity.badRequest().body("Wrong id");
+        }
         return ResponseEntity.ok(userService.getAccounts(user.getClientId()));
 
     }

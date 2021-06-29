@@ -12,40 +12,59 @@
 <main>
     <section>
         <h1>Create user</h1>
-        <form method="post">
-            <input type="text" placeholder="firstname">
-            <input type="text" placeholder="lastname">
-            <div class="account_data">
-                <input type="text" class="account" placeholder="account num">
-                <input type="text" class="account" placeholder="card/simple">
-                <input type="text" class="account" placeholder="balance">
-            </div>
-            <button type="button" id="create">Create</button>
-        </form>
-        <div id="acc_resp"></div>
+        <div class="wrapper">
+            <form method="post">
+                <input type="text" placeholder="firstname" id="firstname">
+                <input type="text" placeholder="lastname" id="lastname">
+                <div class="account_data">
+                    <input type="text" class="account" placeholder="account num" id="account_num">
+                    <input type="text" class="account" placeholder="card/simple" id="account_type">
+                    <input type="text" class="account" placeholder="balance" id="balance">
+                </div>
+                <button type="button" id="create" onclick="createUserWithAcc()">Create</button>
+            </form>
+            <div id="acc_resp" class="response_area"></div>
+        </div>
     </section>
     <section>
         <h1>Create payment</h1>
-        <form method="post">
-            <input type="text" class="payment_data" placeholder="account sender id">
-            <input type="text" class="payment_data" placeholder="account receiver id">
-            <input type="text" class="payment_data" placeholder="amount">
-            <input type="text" class="payment_data" placeholder="reason">
-            <button type="button" id="pay">Pay</button>
-        </form>
-        <div id="payment_resp"></div>
+        <div class="wrapper">
+            <form method="post">
+                <input type="text" class="payment_data" placeholder="account sender id" id="sender">
+                <input type="text" class="payment_data" placeholder="account receiver id" id="receiver">
+                <input type="text" class="payment_data" placeholder="amount" id="amount">
+                <input type="text" class="payment_data" placeholder="reason" id="reason">
+                <button type="button" id="pay" onclick="createPayment()">Pay</button>
+            </form>
+            <div id="payment_resp" class="response_area"></div>
+        </div>
     </section>
     <section>
         <h1>Get payment journal</h1>
-        <form method="post">
-            <input type="text" class="get_journal" placeholder="payer id">
-            <input type="text" class="get_journal" placeholder="receiver id">
-            <input type="text" class="get_journal" placeholder="account sender">
-            <input type="text" class="get_journal" placeholder="account receiver">
-            <button id="get_jour_btn" type="button">Get journal</button>
-        </form>
-        <div class="journal_resp"></div>
+        <div class="wrapper">
+            <form method="post">
+                <input type="text" class="get_journal" placeholder="payer id" id="payer_id">
+                <input type="text" class="get_journal" placeholder="receiver id" id="rec_id">
+                <input type="text" class="get_journal" placeholder="account sender" id="acc_send_id">
+                <input type="text" class="get_journal" placeholder="account receiver" id="acc_rec_id">
+                <button id="get_jour_btn" type="button" onclick="getPaymentJournal()">Get journal</button>
+            </form>
+            <div id="journal_resp" class="response_area"></div>
+        </div>
+    </section>
+    <section>
+        <h1>Get account</h1>
+        <div class="wrapper">
+            <form method="post">
+                <input type="text" id="get_acc" placeholder="user id">
+                <button id="get_acc_btn" onclick="getAccByUserId()">Get account</button>
+            </form>
+            <div class="response_area" id="acc_response_area"></div>
+        </div>
     </section>
 </main>
+
+<script src="index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>

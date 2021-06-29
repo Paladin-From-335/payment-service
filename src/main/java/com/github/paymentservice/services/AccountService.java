@@ -22,7 +22,7 @@ public class AccountService {
     }
 
     public List<Account> findAllAccountsByClientId(Long clientId) {
-       return accountRepo.findAllByClientId(clientId);
+        return accountRepo.findAllByClientId(clientId);
     }
 
 }

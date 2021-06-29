@@ -14,8 +14,8 @@ public class Converter {
 
         List<Account> accounts = new ArrayList<>();
 
-        for (AccountRegDto dto:regDtos) {
-          accounts.add(new Account(clientId, dto.getAccountNum(), dto.getAccountType(), dto.getBalance()));
+        for (AccountRegDto dto : regDtos) {
+            accounts.add(new Account(clientId, dto.getAccountNum(), dto.getAccountType(), dto.getBalance()));
         }
         return accounts;
     }

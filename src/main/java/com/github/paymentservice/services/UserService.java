@@ -33,6 +33,7 @@ public class UserService {
         accountService.insertClientAccounts(converter.convertDtoToEntity(payload.getAccounts(), user.getClientId()));
         return user.getClientId();
     }
+
     public List<Account> getAccounts(Long clientId) {
         return accountService.findAllAccountsByClientId(clientId);
     }

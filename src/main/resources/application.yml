@@ -4,4 +4,4 @@ spring:
   application:
     name: payment-service
   profiles:
-    active: test
+    active: prod

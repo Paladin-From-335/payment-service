@@ -1,6 +1,6 @@
 package com.github.paymentservice.exceptions;
 
-public class PaymentException extends RuntimeException{
+public class PaymentException extends RuntimeException {
 
     private String message;
 

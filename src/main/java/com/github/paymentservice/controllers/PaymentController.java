@@ -2,7 +2,6 @@ package com.github.paymentservice.controllers;
 
 import com.github.paymentservice.dto.PaymentDto;
 import com.github.paymentservice.dto.PaymentJournalDto;
-import com.github.paymentservice.exceptions.BadRequest;
 import com.github.paymentservice.services.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +21,25 @@ public class PaymentController {
 
     @PostMapping("/payment")
     public ResponseEntity<Object> createPayment(@RequestBody PaymentDto payload) {
+        if (payload.getAmount() == null || payload.getReason() == null || payload.getDestAccId() <= 0 || payload.getSourceAccId() <= 0) {
+            return ResponseEntity.badRequest().body("Wrong payment data");
+        }
         return paymentService.responseEntity(List.of(payload));
     }
 
     @PostMapping("/paymentbatch")
     public ResponseEntity<Object> createPayment(@RequestBody List<PaymentDto> payload) {
+        if (payload.isEmpty()) {
+            return ResponseEntity.badRequest().body("Wrong payment data");
+        }
         return paymentService.responseEntity(payload);
     }
 
     @PostMapping("/journal")
     public ResponseEntity<Object> getJournal(@RequestBody PaymentJournalDto payload) {
-            return ResponseEntity.ok(paymentService.getPaymentJournal(payload));
+        if (payload.getPayerId() <= 0 || payload.getReceiverId() <= 0 || payload.getSourceAccId() <= 0 || payload.getDestAccId() <= 0) {
+            return ResponseEntity.badRequest().body("Wrong journal request");
+        }
+        return ResponseEntity.ok(paymentService.getPaymentJournal(payload));
     }
 }

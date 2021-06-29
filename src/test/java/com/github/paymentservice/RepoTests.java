@@ -19,7 +19,6 @@ public class RepoTests {
 
     @Test
     void a() {
-        userRepo.save(new User());
         User user = userRepo.getUserById(34L);
         System.out.println(user == null);
     }

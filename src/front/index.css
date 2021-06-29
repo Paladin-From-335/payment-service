@@ -1,13 +1,76 @@
-body{
+body {
     background: linear-gradient(90deg, lightskyblue, lightcyan);
 }
 
-main{
+main {
     display: grid;
     grid-template-rows: 600px 600px 600px;
 }
-section{
+
+section {
+    position: relative;
     width: 80%;
     margin: 0 10% 0 10%;
-    border: 3px solid lightgreen;
+}
+
+.wrapper {
+    position: absolute;
+    left: 0;
+    top: 80px;
+    width: 100%;
+    display: grid;
+    grid-gap: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+}
+
+.response_area {
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
+form {
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+input {
+    position: relative;
+    margin: 0 25% 0 25%;
+    width: 50%;
+    height: 35px;
+    font-size: 25px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.account_data {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.account_data input {
+    width: 40%;
+    height: 30px;
+    margin: 0 30% 0 30%;
+}
+
+button {
+    width: 30%;
+    height: 35px;
+    background-color: lightgray;
+    color: white;
+    font-size: 25px;
+    font-weight: bolder;
+    margin: 0 35% 0 35%;
+}
+
+h1 {
+    margin: 10px 45% 0 45%;
+    width: 250px;
 }

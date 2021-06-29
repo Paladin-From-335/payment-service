@@ -33,7 +33,7 @@ public class Account {
     @Column(name = "balance", nullable = false, columnDefinition = "DECIMAL")
     private BigDecimal balance;
 
-    public Account(Long clientId,long accountNum, String accountType, BigDecimal balance) {
+    public Account(Long clientId, long accountNum, String accountType, BigDecimal balance) {
         this.clientId = clientId;
         this.accountNum = accountNum;
         this.accountType = accountType;

@@ -145,7 +145,7 @@ public class PaymentService {
 
 
     //Если нашли такой счет, то второй раз не будем искать
-    public long getAccountNumById (long accountId, Map<Long, Long> accountIdNum) {
+    public long getAccountNumById(long accountId, Map<Long, Long> accountIdNum) {
         if (Objects.nonNull(accountIdNum.get(accountId)))
             return accountIdNum.get(accountId);
         Account account = accountRepo.getById(accountId);

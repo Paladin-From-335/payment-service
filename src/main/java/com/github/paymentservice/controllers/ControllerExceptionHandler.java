@@ -3,8 +3,6 @@ package com.github.paymentservice.controllers;
 import com.github.paymentservice.dto.ErrorResponse;
 import com.github.paymentservice.exceptions.BadRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
