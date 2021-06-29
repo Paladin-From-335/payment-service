@@ -4,7 +4,7 @@ function createUserWithAcc() {
     const accountNum = document.getElementById("account_num").value;
     const accountType = document.getElementById("account_type").value;
     const balance = document.getElementById("balance").value;
-    const responseArea = document.getElementById("acc_resp");
+    const responseArea = document.getElementById("resp_margin");
 
     let data = {
         firstname: firstname,
@@ -21,7 +21,7 @@ function createUserWithAcc() {
     })
         .then((response) => {
                 if (response.status === 200) {
-                    console.log(response)
+                    responseArea.append(response.data)
                 }
 
             }, (error) => {
@@ -35,7 +35,8 @@ function createPayment() {
     const receiverId = document.getElementById("receiver").value;
     const amount = document.getElementById("amount").value;
     const reason = document.getElementById("reason").value;
-    const paymentResp = document.getElementById("payment_resp");
+    const responseArea = document.getElementById("resp_payment_marg_f");
+    const responseArea2 = document.getElementById("resp_payment_marg_s");
 
     let data = {
         sourceAccId: senderId,
@@ -49,7 +50,9 @@ function createPayment() {
     })
         .then((resp) => {
                 if (resp.status === 200) {
-                    console.log(resp)
+                    console.log(resp.data)
+                    responseArea.append(resp.data.paymentId);
+                    responseArea2.append(resp.status)
                 }
             }, (error) => {
                 console.log(error)
@@ -62,13 +65,20 @@ function getPaymentJournal() {
     const receiverId = document.getElementById("rec_id").value;
     const srcAccId = document.getElementById("acc_send_id").value;
     const destAccId = document.getElementById("acc_rec_id").value;
-    const respArea = document.getElementById("journal_resp");
+
+    const payment_id = document.getElementById("paym_id_marg");
+    const time = document.getElementById("time_marg");
+    const src_acc = document.getElementById("src_acc_marg");
+    const dest_acc = document.getElementById("dest_acc_marg");
+    const amount = document.getElementById("amount_marg");
+    const payer = document.getElementById("payer");
+    const recipient = document.getElementById("recipient");
 
     let data = {
-        payerId: payerId,
-        receiverId: receiverId,
-        sourceAccId: srcAccId,
-        destAccId: destAccId
+        payer_id: payerId,
+        receiver_id: receiverId,
+        source_acc_id: srcAccId,
+        dest_acc_id: destAccId
     }
 
     axios.post("http://localhost:8083/journal", data, {
@@ -77,6 +87,15 @@ function getPaymentJournal() {
         .then((resp) => {
                 if (resp.status === 200) {
                     console.log(resp)
+                    payment_id.append(resp.data[0].payment_id);
+                    time.append(resp.data[0].timestamp);
+                    src_acc.append(resp.data[0].source_acc_num);
+                    dest_acc.append(resp.data[0].dest_acc_num);
+                    amount.append(resp.data[0].amount);
+                    payer.append(resp.data[0].payer.firstname + " ");
+                    payer.append(resp.data[0].payer.lastname);
+                    recipient.append(resp.data[0].receiver.firstname + " ");
+                    recipient.append(resp.data[0].receiver.lastname);
                 }
             }, (error) => {
                 console.log(error)
@@ -86,7 +105,10 @@ function getPaymentJournal() {
 
 function getAccByUserId() {
     const clientId = document.getElementById("get_acc").value;
-    const respArea = document.getElementById("acc_response_area");
+    const acc_id = document.getElementById("account_id");
+    const acc_num = document.getElementById("account_number");
+    const acc_type = document.getElementById("account_typ");
+    const balance = document.getElementById("account_balance");
 
     let data = {
         clientId: clientId
@@ -97,6 +119,10 @@ function getAccByUserId() {
     }).then((resp) => {
             if (resp.status === 200) {
                 console.log(resp)
+                acc_id.append(resp.data[0].accountId)
+                acc_num.append(resp.data[0].accountNum)
+                acc_type.append(resp.data[0].accountType)
+                balance.append(resp.data[0].balance)
             }
         }, (error) => {
             console.log(error)

@@ -23,7 +23,9 @@
                 </div>
                 <button type="button" id="create" onclick="createUserWithAcc()">Create</button>
             </form>
-            <div id="acc_resp" class="response_area"></div>
+            <div id="acc_resp" class="response_area">
+                <p id="resp_margin">Client id:<br>  </p>
+            </div>
         </div>
     </section>
     <section>
@@ -36,7 +38,10 @@
                 <input type="text" class="payment_data" placeholder="reason" id="reason">
                 <button type="button" id="pay" onclick="createPayment()">Pay</button>
             </form>
-            <div id="payment_resp" class="response_area"></div>
+            <div id="payment_resp" class="response_area">
+                <p class="resp_margin" id="resp_payment_marg_f">Payment id: </p>
+                <p class="resp_margin" id="resp_payment_marg_s">Status: </p>
+            </div>
         </div>
     </section>
     <section>
@@ -47,9 +52,17 @@
                 <input type="text" class="get_journal" placeholder="receiver id" id="rec_id">
                 <input type="text" class="get_journal" placeholder="account sender" id="acc_send_id">
                 <input type="text" class="get_journal" placeholder="account receiver" id="acc_rec_id">
-                <button id="get_jour_btn" type="button" onclick="getPaymentJournal()">Get journal</button>
+                <button id="get_jour_btn" type="button" onclick="getPaymentJournal()">Journal</button>
             </form>
-            <div id="journal_resp" class="response_area"></div>
+            <div id="journal_resp" class="response_area">
+                <p class="resp_margin" id="paym_id_marg">Payment id: </p>
+                <p class="resp_margin" id="time_marg">Timestamp: </p>
+                <p class="resp_margin" id="src_acc_marg">Source account: </p>
+                <p class="resp_margin" id="dest_acc_marg">Dest. account: </p>
+                <p class="resp_margin" id="amount_marg">Amount: </p>
+                <p class="resp_margin" id="payer">Payer: </p>
+                <p class="resp_margin" id="recipient">Recipient: </p>
+            </div>
         </div>
     </section>
     <section>
@@ -57,9 +70,14 @@
         <div class="wrapper">
             <form method="post">
                 <input type="text" id="get_acc" placeholder="user id">
-                <button id="get_acc_btn" onclick="getAccByUserId()">Get account</button>
+                <button id="get_acc_btn" type="button" onclick="getAccByUserId()">Account</button>
             </form>
-            <div class="response_area" id="acc_response_area"></div>
+            <div class="response_area" id="acc_response_area">
+                <p class="resp_marg" id="account_id">Account id: </p>
+                <p class="resp_marg" id="account_number">Account number: </p>
+                <p class="resp_marg" id="account_typ">Account type: </p>
+                <p class="resp_marg" id="account_balance">Balance: </p>
+            </div>
         </div>
     </section>
 </main>
